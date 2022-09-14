@@ -1,0 +1,27 @@
+name: Actions workflow
+
+on:
+  push:
+  pull_request: 
+    types: [closed, reopened, assigned]
+
+
+jobs:
+  learn-about-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+        with: 
+          fetch-depth: 0
+      - name: Git ls
+        run: |
+            echo $GITHUB_REPOSITORY
+            echo $GITHUB_SHA
+      - name: Simple js Actions
+        id: jsaction
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: "Pratik"
+      - name: Log gtretting time
+        run: echo "${{steps.jsaction.outputs.time}}"
