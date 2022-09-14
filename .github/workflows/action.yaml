@@ -1,0 +1,16 @@
+name: Actions workflow
+
+on: [push]
+
+
+jobs:
+  learn-about-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple js Actions
+        id: jsaction
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: "Pratik"
+      - name: Log gtretting time
+        run: echo "${{steps.jsaction.outputs.time}}"
