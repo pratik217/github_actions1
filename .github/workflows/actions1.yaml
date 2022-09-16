@@ -1,0 +1,24 @@
+name: actions1
+
+
+on: [push]
+
+
+jobs:
+  jobname1:
+      strategy:
+        matrix: 
+          os: [macos-latest, windows-latest, ubuntu-latest]
+          node_version: [6, 8, 10]
+      runs-on: ${{ matrix.os }}
+      steps:
+        - name: Node version check
+          run : node -v
+        - name: Setup node
+          uses: actions/setup-node@v1
+          with:
+            node_version: ${{ matrix.node_version }}
+        - name: Check node versions
+          run: node -v
+
+
