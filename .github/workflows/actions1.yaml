@@ -15,7 +15,7 @@ jobs:
         - name: Node version check
           run : node -v
         - name: Setup node
-          uses: actions/setup-mode@v1
+          uses: actions/setup-node@v1
           with:
             node_version: ${{ matrix.node_version }}
         - name: Check node versions
